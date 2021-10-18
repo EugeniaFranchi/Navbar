@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 const Hello = ({ datos }) => {
-  const data = useSelector((store) => store.payload);
+  const data = useSelector((store) => store.count.payload);
   console.log(data);
   const bornYear = () => new Date().getFullYear() - data.age;
 

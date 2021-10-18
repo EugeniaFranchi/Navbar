@@ -1,23 +1,24 @@
 //en este vamos a usar render condicional
-import React, { useState } from "react";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "./app/actions/AppActions";
 
 const App = () => {
-  const [counter, setCounter] = useState(0);
-
-  const increaseByOne = () => setCounter(counter + 1);
-  const setToZero = () => setCounter(0);
-  const decreaseByOne = () => setCounter(counter - 1);
+  const counter = useSelector((store) => store.app.count);
+  const dispatch = useDispatch();
 
   const resta = () => {
-    return <button onClick={decreaseByOne}>minus</button>;
+    return (
+      <button onClick={() => dispatch(actions.decreaseByOne())}>minus</button>
+    );
   };
 
   return (
     <div>
       <div>{counter}</div>
-      <button onClick={increaseByOne}>plus</button>
+      <button onClick={() => dispatch(actions.increaseByOne())}>plus</button>
       {counter > 2 ? resta() : <button>waiting</button>}
-      <button onClick={setToZero}>zero</button>
+      <button onClick={() => dispatch(actions.setToZero())}>zero</button>
     </div>
   );
 };

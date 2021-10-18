@@ -10,7 +10,7 @@ const styles = {
 };
 
 const Counter = ({ increment, decrement }) => {
-  const count = useSelector((store) => store.count);
+  const count = useSelector((store) => store.count.count);
   const dispatch = useDispatch();
   return (
     <div style={styles.container}>
